@@ -51,7 +51,7 @@ public partial class BookDetail
 
     public virtual Author Author { get; set; }
 
-    public virtual Book Book { get; set; }
+    public virtual Book Book{ get; set; }
 
     public virtual Publisher Publisher { get; set; }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GacXep.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +9,11 @@ namespace GacXep.Controllers
 {
     public class HomeController : Controller
     {
+        DBGacXepBookstoreEntities db = new DBGacXepBookstoreEntities();
         public ActionResult Index()
         {
-            return View();
+            var booksDetail = db.BookDetails;
+            return View(booksDetail.ToList());
         }
 
         public ActionResult About()
@@ -30,6 +33,12 @@ namespace GacXep.Controllers
         public ActionResult FAQ()
         {
             return View();
+        }
+
+        public PartialViewResult _NewArrivalsPartial()
+        {
+            var booksDetail = db.BookDetails.ToList();
+            return PartialView(booksDetail);
         }
     }
 }
